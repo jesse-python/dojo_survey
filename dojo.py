@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -10,9 +10,11 @@ def index():
 def result():
     print "Got Post Info"
     print request.form
+    name = request.form['name']
+    location = request.form['location']
+    language = request.form['language']
+    comment = request.form['comment']
 
-
-
-    return render_template('result.html')
+    return render_template('result.html', name=name, location=location, language=language, comment=comment)
 
 app.run(debug=True)
